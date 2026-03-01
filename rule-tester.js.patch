@@ -1,0 +1,11 @@
+--- ./rule-tester.js	2026-03-01 12:59:26.186041163 +0200
++++ ./rule-tester_update.js	2026-03-01 13:12:29.276536951 +0200
+@@ -28,7 +28,7 @@
+ 	defaultRuleTesterConfig,
+ } = require("../config/default-config");
+ 
+-const ajv = require("../shared/ajv")({ strictDefaults: true });
++const ajv = require("../shared/ajv");
+ 
+ const parserSymbol = Symbol.for("eslint.RuleTester.parser");
+ const { ConfigArraySymbol } = require("@eslint/config-array");

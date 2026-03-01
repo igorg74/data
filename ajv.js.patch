@@ -1,0 +1,36 @@
+--- ./ajv.js	2026-03-01 12:59:23.917836094 +0200
++++ ./ajv_update.js	2026-03-01 13:40:19.178272752 +0200
+@@ -4,31 +4,18 @@
+  */
+ "use strict";
+ 
+-//------------------------------------------------------------------------------
+-// Requirements
+-//------------------------------------------------------------------------------
+-
+-const Ajv = require("ajv"),
+-	metaSchema = require("ajv/lib/refs/json-schema-draft-04.json");
+-
+-//------------------------------------------------------------------------------
+-// Public Interface
+-//------------------------------------------------------------------------------
++const Ajv = require("ajv");
+ 
+ module.exports = (additionalOptions = {}) => {
+ 	const ajv = new Ajv({
+ 		meta: false,
++		strict: false,
+ 		useDefaults: true,
+ 		validateSchema: false,
+-		missingRefs: "ignore",
+ 		verbose: true,
+ 		schemaId: "auto",
+ 		...additionalOptions,
+ 	});
+ 
+-	ajv.addMetaSchema(metaSchema);
+-	// eslint-disable-next-line no-underscore-dangle -- Ajv's API
+-	ajv._opts.defaultMeta = metaSchema.id;
+-
+ 	return ajv;
+ };
